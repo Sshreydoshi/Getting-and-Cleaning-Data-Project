@@ -2,6 +2,7 @@
 packages <- c("data.table", "reshape2")
 sapply(packages, require, character.only=TRUE, quietly=TRUE)
 path <- getwd()
+if(!file.exists("./tempData")){dir.create("./tempData")}
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(url, file.path(path, "./tempData/dataFiles.zip"))
 unzip(zipfile = "./tempData/dataFiles.zip", exdir = "./tempData")
