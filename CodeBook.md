@@ -48,22 +48,30 @@ The following files are available for the train and test data. Their description
 ### Notes: 
 
 - Features are normalized and bounded within [-1,1].
-- Each feature vector is a row on the text file.
+- Each feature vector is a row on the text file. 
 
-### Preprocessing
-The following data transformations were conducted to form a tidy dataset:  
+### Processing - Data clean up and transformation
 
-1. Added a new feature ***activitylabel*** - factor variable for activities with the following levels: *WALKING*, *WALKING_UPSTAIRS*, *WALKING_DOWNSTAIRS*, *SITTING*, *STANDING*, *LAYING*. 
+The raw data has been transformed through the following steps:
 
-2. Tidy dataset was build as a mean values of features grouped by ***activitylabel*** and ***subject*** - for each subject and activity type determined mean values over all activities of that type.  
+### 1. Merges the training and the test sets to create one data set
+First, the script loads the data from `activity_labels.txt` and `features.txt` files, the train data from `train/subject_train.txt`, `train/X_train.txt` and `train/y_train.txt` files and the test data from `test/subject_test.txt`, `test/X_test.txt` and `test/y_test.txt` files. The fread() function is used to load the X_ files as they are large files.
+Then, subject files are merged together as well as X and y files for train and test data sets.
+The final merge of subject, X and y tables is made later because several operations are performed on each of them.
 
-### Processing - Steps Performed
+### 2. Extracts only the measurements on the mean and standard deviation for each measurement
+Here, we filter the X table to select only variables containing `mean(` or `std(` using a regular expression.
 
-1. Merge the training and the test sets to create one data set.
-2. Extracts only the measurements on the mean and standard deviation for each measurement.
-3. Uses descriptive activity names to name the activities in the data set
-4. Appropriately labels the data set with descriptive variable names.
-5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+### 3. Uses descriptive activity names to name the activities in the data set
+The y table contains the id of the activity label of each measurement. So the script matches it with the corresponding name using the table loaded from the `activity_labels.txt` file.
+
+### 4. Appropriately labels the data set with descriptive variable names
+During this step, we take the values from `features.txt` with the same regular expression as in step 2 to put the variable names in the columns of X table. The subject and y columns, which are now merged with X, are respectively named `subject` and `activityLabel`.
+Special characters are removed from the names and the first letter of `mean` and `std` are uppercased.
+
+### 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
+Finally, a summarization is made on the dataset to extract the mean of each subject/activityLabel group.
+The final data set is written to a txt file.
 
 ### Tidy data set
 The tidy data set of dimension 180x68 has the following variables:
