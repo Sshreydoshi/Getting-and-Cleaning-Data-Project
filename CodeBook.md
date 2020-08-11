@@ -57,10 +57,17 @@ The following data transformations were conducted to form a tidy dataset:
 
 2. Tidy dataset was build as a mean values of features grouped by ***activitylabel*** and ***subject*** - for each subject and activity type determined mean values over all activities of that type.  
 
-### Steps Performed
+### Processing - Steps Performed
 
 1. Merge the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 3. Uses descriptive activity names to name the activities in the data set
 4. Appropriately labels the data set with descriptive variable names.
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+### Tidy data set
+The tidy data set of dimension 180x68 has the following variables:
+
+- SubjectNum: id of the subject for whom the measurement was made (from 1 to 30)
+- Activity: activity performed during the measurement (LAYING, SITTING, STANDING, WALKING, WALKING_DOWNSTAIRS or WALKING_UPSTAIRS)
+- The 66 other variables are the mean and std of each measured signal (tBodyAccX, tBodyAccY, tBodyAccZ, tGravityAccX, tGravityAccY, tGravityAccZ, tBodyAccJerkX, tBodyAccJerkY, tBodyAccJerkZ, tBodyGyroX, tBodyGyroY, tBodyGyroZ, tBodyGyroJerkX, tBodyGyroJerkY, tBodyGyroJerkZ, tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag, fBodyAccX, fBodyAccY, fBodyAccZ, fBodyAccJerkX, fBodyAccJerkY, fBodyAccJerkZ, fBodyGyroX, fBodyGyroY, fBodyGyroZ, fBodyAccMag, fBodyBodyAccJerkMag, fBodyBodyGyroMag and fBodyBodyGyroJerkMag)
