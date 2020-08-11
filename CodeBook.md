@@ -1,12 +1,8 @@
-## Getting and Cleaning Data Project
+## Getting and Cleaning Data - Code Book
 
-Author: Shrey Doshi
-
-### Description
-Additional information about the variables, data and transformations used in the course project for the Johns Hopkins Getting and Cleaning Data course.
 
 ### Source Data
-Data + Description can be found here [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+Data + Description can be found here [UCI HAR Dataset](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones "UCI MAchine Learning Repository")
 
 ### Data Set Information
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
@@ -53,6 +49,13 @@ The following files are available for the train and test data. Their description
 
 - Features are normalized and bounded within [-1,1].
 - Each feature vector is a row on the text file.
+
+### Preprocessing
+The following data transformations were conducted to form a tidy dataset:  
+
+1. Added a new feature ***activitylabel*** - factor variable for activities with the following levels: *WALKING*, *WALKING_UPSTAIRS*, *WALKING_DOWNSTAIRS*, *SITTING*, *STANDING*, *LAYING*. 
+
+2. Tidy dataset was build as a mean values of features grouped by ***activitylabel*** and ***subject*** - for each subject and activity type determined mean values over all activities of that type.  
 
 ### Steps Performed
 
